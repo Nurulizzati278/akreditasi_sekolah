@@ -1,0 +1,376 @@
+{% extends 'base.html' %} 
+{% load static %} 
+{% block content %} 
+{% include 'layout_admin/navbar.html' %} 
+{% include 'layout_admin/sidebar.html' %}
+
+ <!-- Main Content -->
+ <div class="main-content">
+    <section class="section">
+      <div class="section-header">
+        <h1>Halaman Tambah Data</h1>
+        <div class="section-header-breadcrumb">
+          <div class="breadcrumb-item active"><a href="#">Dashboard</a></div>
+          <div class="breadcrumb-item"><a href="#">Data Sekolah</a></div>
+          <div class="breadcrumb-item">Isi Data Sekolah</div>
+        </div>
+      </div>
+
+      <div class="section-body">
+        <h2 class="section-title">Tambah Data Sekolah</h2>
+
+        <div class="row">
+          <div class="container">
+            <div class="card">
+                <form method="POST" class="form" action="{% url "PengajuanSekolah" %}"  enctype="multipart/form-data"   autocomplete="off">
+                  {% csrf_token %}
+                  <section id="PengajuanSection1">
+                    <div class="card-body">
+                      <div class="form-group">
+                        <label>NPSN</label>
+                        <input type="number"  name="NPSN" class="form-control" required="">
+                      </div>
+                      <div class="form-group">
+                        <label>Nama Sekolah</label>
+                        <input type="text"  name="NamaSekolah" class="form-control" required="">
+                      </div>
+                      <div class="form-group">
+                        <label>Nama Kepala Sekolah</label>
+                        <input type="text" name="NamaKepalaSekolah" class="form-control" required="">
+                      </div>
+                      <div class="form-group">
+                        <label>Nama Pengawas Sekolah</label>
+                        <input type="text" name="NamaPengawasSekolah" class="form-control" required="">
+                      </div>
+                      <div class="form-group">
+                        <label>Alamat Sekolah</label>
+                        <input type="text" name="AlamatSekolah" class="form-control" required="">
+                      </div>
+                      <div class="form-group">
+                        <label>Jumlah Guru</label>
+                        <input type="text" name="JumlahGuru" class="form-control" required="">
+                      </div>
+                      <div class="form-group">
+                        <label>Jumlah Ruang Kelas</label>
+                        <input type="text" name="JumlahKelas" class="form-control" required="">
+                      </div>
+                      <div class="form-group">
+                        <label>Jenjang Sekolah</label>
+                        <select name="JenjangSekolah" id="pilihanStatus">
+                          <option value="SMA">SMA</option>
+                          <option value="SMK">SMK</option>
+                        </select>
+                      </div>
+                      <div class="form-group">
+                        <label>Status Sekolah</label>
+                        <select name="StatusSekolah" id="pilihanStatus">
+                          <option value="Negeri">Negeri</option>
+                          <option value="Swasta">Swasta</option>
+                        </select>
+                      </div>
+                      <div class="form-group">
+                        <label>Kabupaten/Kota</label>
+                        <select name="KabupatenKota" id="pilihanKabupatenkota">
+                          <option>Pilih Kabupaten/Kota </option>
+                          <option value="Kabupaten Aceh Barat">Kabupaten Aceh Barat</option>
+                          <option value="Kabupaten Aceh Barat Daya">Kabupaten Aceh Barat Daya</option>
+                          <option value="Kabupaten Aceh Besar">Kabupaten Aceh Besar</option>
+                          <option value="Kabupaten Aceh Jaya">Kabupaten Aceh Jaya</option>
+                          <option value="Kabupaten Aceh Selatan">Kabupaten Aceh Selatan</option>
+                          <option value="Kabupaten Aceh Singkil">Kabupaten Aceh Singkil</option>
+                          <option value="Kabupaten Aceh Tamiang">Kabupaten Aceh Tamiang</option>
+                          <option value="Kabupaten Aceh Tengah">Kabupaten Aceh Tengah</option>
+                          <option value="Kabupaten Aceh Tenggara">Kabupaten Aceh Tenggara</option>
+                          <option value="Kabupaten Aceh Timur">Kabupaten Aceh Timur</option>
+                          <option value="Kabupaten Aceh Utara">Kabupaten Aceh Utara</option>
+                          <option value="Kabupaten Bener Meriah">Kabupaten Bener Meriah</option>
+                          <option value="Kabupaten Bireun">Kabupaten Bireun</option>
+                          <option value="Kabupaten Gayo Lues">Kabupaten Gayo Lues</option>
+                          <option value="Kabupaten Nagan Raya">Kabupaten Nagan Raya</option>
+                          <option value="Kabupaten Pidie">Kabupaten Pidie</option>
+                          <option value="Kabupaten Pidie Jaya">Kabupaten Pidie Jaya</option>
+                          <option value="Kabupaten Simeulue">Kabupaten Simeulue</option>
+                          <option value="Kota Banda Aceh">Kota Banda Aceh</option>
+                          <option value="Kota Langsa">Kota Langsa</option>
+                          <option value="Kota Lhokseumawe">Kota Lhokseumawe</option>
+                          <option value="Kota Sabang">Kota Sabang</option>
+                          <option value="Kota Subulussalam">Kota Subulussalam</option>
+                      </select>
+                      </div>
+                      <div class="form-group">
+                        <label>Kecamatan</label>
+                        <select name="Kecamatan" id="pilihanKecamatan">
+                            <option value="">Pilih Kecamatan</option>
+                        </select>
+                    </div>
+                      <div class="form-group">
+                      <label>Status Akreditasi</label>
+                      <select name="AkreditasiSekolah" id="pilihanAkreditasi">
+                          <option value="A">A</option>
+                          <option value="B">B</option>
+                          <option value="C">C</option>
+                          <option value="TT">TT</option>
+                      </select>
+                      </div>
+                      <div class="form-group">
+                        <label>Tahun Pengajuan Terakhir</label>
+                        <input type="number"  name="TahunPengajuanTerakhir" class="form-control" required="">
+                      </div>
+
+                      <div id="map" class="mt-3" style="height: 430px;border-radius: 30px;"></div>
+                        <!-- Hidden Input untuk Menyimpan Polyline -->
+                        <input type="hidden" name="geometri" id="geometri" required>
+                        <input type="hidden" name="warna" id="warna" required>
+
+                        <!-- leaflet js-->
+                        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.2/dist/leaflet.css" />
+                        <script src="https://unpkg.com/leaflet@1.9.2/dist/leaflet.js"></script>
+
+                        <!-- leaflet pluggin js-->
+                        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/0.4.2/leaflet.draw.css"/>
+                        <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/0.4.2/leaflet.draw.js"></script>
+
+                        <!--fullscreen-->
+                        <link rel="stylesheet" href="https://unpkg.com/leaflet-fullscreen/dist/leaflet.fullscreen.css" />
+                        <script src="https://unpkg.com/leaflet-fullscreen/dist/Leaflet.fullscreen.min.js"></script>
+
+                         <script>
+                          // Tambahkan event listener untuk dropdown Kabupaten/Kota
+                          document.getElementById('pilihanKabupatenkota').addEventListener('change', function() {
+                            var kabupatenKota = this.value;
+                            cariGeoJSON(kabupatenKota);
+                          });
+
+                          // Fungsi untuk membaca file GeoJSON dan memindahkan peta ke wilayah yang dipilih
+                          function cariGeoJSON(lokasi) {
+                            fetch(`/static/assets/data/GeoJSON/kabupaten/${lokasi.toLowerCase().replace(/\s+/g, '_')}.geojson`)
+                                .then(response => response.json())
+                                .then(data => {
+                                    if (data && data.features && data.features.length > 0) {
+                                        var feature = data.features[0];
+                                        var geometry = feature.geometry;
+                                        myMap.fitBounds(L.geoJSON(geometry).getBounds());
+                                    } else {
+                                        alert('Wilayah tidak ditemukan.');
+                                    }
+                                })
+                                .catch(error => {
+                                    console.error('Terjadi kesalahan:', error);
+                                });
+                          }
+
+                           // Daftar kabupaten dan kecamatan (contoh)
+                          var kabupatenKecamatan = {
+                            "Kabupaten Aceh Barat": ["Kecamatan Arongan Lambalek", "Kecamatan Bubon", "Kecamatan Johan Pahlawan", "Kecamatan Kaway XVI", "Kecamatan Meureubo",
+                                                      "Kecamatan Pante Ceureumen", "Kecamatan Panton reu", "Kecamatan Samatiga", "Kecamatan Sungai Mas", "Kecamatan Woyla", 
+                                                      "Kecamatan Woyla Barat", "Kecamatan Woyla Timur"],
+                            "Kabupaten Aceh Barat Daya": ["Kecamatan Babahrot", "Kecamatan Blang Pidie", "Kecamatan Jeumpa", "Kecamatan Kuala Batee", "Kecamatan Lembah Sabil",
+                                                          "Kecamatan Manggeng", "Kecamatan Setia", "Kecamatan Susoh", "Kecamatan Tangan Tangan"],
+                            "Kabupaten Aceh Besar": ["Kecamatan Baitussalam", "Kecamatan Blang Bintang", "Kecamatan Darul Imarah", "Kecamatan Darul Kamal", "Kecamatan Darussalam",
+                                                      "Kecamatan Indrapuri", "Kecamatan Ingin Jaya", "Kecamatan Kota Cot Glie", "Kecamatan Kota Jantho", "Kecamatan Krueng Barona Jaya", 
+                                                      "Kecamatan Kuta Baro", "Kecamatan Kuta Malaka", "Kecamatan Lembah Seulawah", "Kecamatan Leupung", "Kecamatan Lhoknga", "Kecamatan Lhoong",
+                                                      "Kecamatan Mesjid Raya", "Kecamatan Montasik", "Kecamatan Peukan Bada", "Kecamatan Pulo Aceh", "Kecamatan Seulimum", "Kecamatan Simpang Tiga", "Kecamatan Suka Makmur"],        
+                            "Kabupaten Aceh Jaya": ["Kecamatan Darul Hikmah", "Kecamatan Darul Hikmah", "Kecamatan Indra Jaya", "Kecamatan Jaya", "Kecamatan Krueng Sabee", "Kecamatan Panga",
+                                                    "Kecamatan Pasie Raya", "Kecamatan Sampoiniet", "Kecamatan Setia Bakti", "Kecamatan Teunom"],        
+                            "Kabupaten Aceh Selatan": ["Kecamatan Bakongan", "Kecamatan Bakongan Timur", "Kecamatan Kluet Selatan", "Kecamatan Kluet Tengah", "Kecamatan Kluet Timur", "Kecamatan Kluet Utara",
+                                                       "Kecamatan Kota Bahagia", "Kecamatan Labuhan Haji", "Kecamatan Labuhan Haji Barat", "Kecamatan Labuhan Haji Timur", "Kecamatan Meukek",
+                                                       "Kecamatan Pasie Raja", "Kecamatan Samadua", "Kecamatan Sawang", "Kecamatan Tapak Tuan", "Kecamatan Trumon", "Kecamatan Trumon Tengah", "Kecamatan Trumon Timur"],        
+                            "Kabupaten Aceh Singkil": ["Kecamatan Danau Paris", "Kecamatan Gunung Meriah", "Kecamatan Kota Baharu", "Kecamatan Kuala Baru", "Kecamatan Pulau Banyak", "Kecamatan Pulau Banyak Barat",
+                                                       "Kecamatan Simpang Kanan", "Kecamatan Singkil", "Kecamatan Singkil Utara", "Kecamatan Singkohor", "Kecamatan Suro Makmur"],        
+                            "Kabupaten Aceh Tamiang": ["Kecamatan Banda Mulia", "Kecamatan bandar Pusaka", "Kecamatan Bendahara", "Kecamatan Karang Baru", "Kecamatan Kejuruan Muda", "Kecamatan Kuala Simpang",
+                                                       "Kecamatan Manyak Payed", "Kecamatan Rantau", "Kecamatan Sekerak", "Kecamatan Seruway", "Kecamatan Tamiang Hulu", "Kecamatan Tenggulun"],        
+                            "Kabupaten Aceh Tengah": ["Kecamatan Alu Lintang", "Kecamatan Bebesen", "Kecamatan Bies", "Kecamatan Bintang", "Kecamatan Celala", "Kecamatan Jagong Jeget","Kecamatan Kebayakan",
+                                                      "Kecamatan Ketol", "Kecamatan Kute Panang", "Kecamatan Laut Tawar", "Kecamatan Linge", "Kecamatan Peugasing", "Kecamatan Rusi Pantara", "Kecamatan Silih Nara"],        
+                            "Kabupaten Aceh Tenggara": ["Kecamatan Babul Makmur", "Kecamatan Babul Rahmah", "Kecamatan Babussalam", "Kecamatan Badar", "Kecamatan Bambel", "Kecamatan Bukit Tusam", "Kecamatan Darul Hasanah",
+                                                        "Kecamatan Deleng Pokhisen", "Kecamatan Ketambe", "Kecamatan Lawe Alas", "Kecamatan Lawe Bulan", "Kecamatan Lawe Sigala Gala", "Kecamatan Lawe Sumur",
+                                                        "Kecamatan Leuser", "Kecamatan Semadam", "Kecamatan Tanoh Alas"],        
+                            "Kabupaten Aceh Timur": ["Kecamatan Banda Alam", "Kecamatan Birem Bayeun", "Kecamatan Darul Aman", "Kecamatan Darul Falah", "Kecamatan Darul Ihsan", "Kecamatan Idi Rayeuk",
+                                                     "Kecamatan Idi Timur", "Kecamatan Idi Tunong", "Kecamatan Indra Makmur", "Kecamatan Julok", "Kecamatan Madat", "Kecamatan Nurussalam", "Kecamatan Pante Bidari",
+                                                     "Kecamatan Peudawa", "Kecamatan Peunaron", "Kecamatan Peureulak", "Kecamatan Peureulak Barat", "Kecamatan Peureulak Timur", "Kecamatan Rantau Peureulak",
+                                                     "Kecamatan Rantau Selamat", "Kecamatan Serba Jadi", "Kecamatan Simpang Jernih", "Kecamatan Simpang Ulim", "Kecamatan Sungai Raya"],        
+                            "Kabupaten Aceh Utara": ["Kecamatan Baktiya", "Kecamatan Baktiya Barat", "Kecamatan Bandar Baro", "Kecamatan Cot Girek", "Kecamatan Dewantara", "Kecamatan Geureudong Pase",
+                                                     "Kecamatan Kuta Makmur", "Kecamatan Langkahan", "Kecamatan Lapang", "Kecamatan Lhoksukon", "Kecamatan Matangkuli", "Kecamatan Meurah Mulia", "Kecamatan Muara Batu",
+                                                     "Kecamatan Nibong", "Kecamatan Nisam", "Kecamatan Nisam Antara", "Kecamatan Paya Bakong", "Kecamatan Pirak Timur", "Kecamatan Samudera", "Kecamatan kecamatansawangacehutara",
+                                                     "Kecamatan Seunuddon", "Kecamatan Simpang Kramat", "Kecamatan Syamtalira Aron", "Kecamatan Syamtalira Bayu", "Kecamatan Tanah Luas", "Kecamatan Tanah Pasir", "Kecamatan Tjambo Aye"],        
+                            "Kabupaten Bener Meriah": ["Kecamatan Bandar", "Kecamatan Bener Kelipah", "Kecamatan Bukit", "Kecamatan Gajah Putih", "Kecamatan Mesidah", "Kecamatan Permata", "Kecamatan Pintu Rime Gayo",
+                                                       "Kecamatan Syiah Utama", "Kecamatan Timang Gajah", "Kecamatan Wih Pesam"],       
+                            "Kabupaten Bireuen": ["Kecamatan Gandapura", "Kecamatan Jangka", "Kecamatan Jeumpa", "Kecamatan Jeunieb", "Kecamatan Juli", "Kecamatan Kota Juang", "Kecamatan Kuala", "Kecamatan Kuta Blang", 
+                                                  "Kecamatan Makmur", "Kecamatan Pandrah", "Kecamatan Peudada", "Kecamatan Peulimbang", "Kecamatan Peusangan", "Kecamatan Peusangan Selatan", "Kecamatan Peusangan Siblah Krueng", 
+                                                  "Kecamatan Samalanga", "Kecamatan Simpang Mamplam"],        
+                            "Kabupaten Gayo Lues": ["Kecamatan Blang Jerango", "Kecamatan Blangkejeren", "Kecamatan Blang Pegayon", "Kecamatan Dabun Gelang", "Kecamatan Kutapanjang", "Kecamatan Pantan Cuaca",
+                                                    "Kecamatan Pining", "Kecamatan Puteri Betung", "Kecamatan Rikit Gaib", "Kecamatan terangun", "Kecamatan Teripe Jaya"],        
+                            "Kabupaten Nagan Raya": ["Kecamatan Beutong", "Kecamatan Beutong Ateuh", "Kecamatan Darul Makmur", "Kecamatan Kuala Nagan", "Kecamatan Kuala Pesisir", "Kecamatan Seunangan",
+                                                     "Kecamatan Seunangan Timur", "Kecamatan Suka Makmue", "Kecamatan Tadu Raya", "Kecamatan Tripa Makmur"],        
+                            "Kabupaten Pidie": ["Kecamatan Batee", "Kecamatan Delima", "Kecamatan Geulumpang Tiga", "Kecamatan Geumpang", "Kecamatan Glumpang Baro", "Kecamatan Grong Grong",
+                                                "Kecamatan Indra Jaya", "Kecamatan Kembang Tanjong", "Kecamatan Keumala", "Kecamatan Kota Sigli", "Kecamatan Mane", "Kecamatan Mila", "Kecamatan Muara Tiga",
+                                                "Kecamatan Mutiara", "Kecamatan Mutiara Timur", "Kecamatan Padang Tiji", "Kecamatan Peukan Baro", "Kecamatan Pidie", "Kecamatan Sakti", "Kecamatan Simpang Tiga", "Kecamatan Tangse", 
+                                                "Kecamatan Tiro", "Kecamatan Titeue"],        
+                            "Kabupaten Pidie Jaya": ["Kecamatan Bandar Dua", "Kecamatan Bandar Baru","Kecamatan Jangka Buya", "Kecamatan Meurah Dua", "Kecamatan Meureudu", "Kecamatan Panteraja", "Kecamatan Trienggadeng", "Kecamatan Ulim"],        
+                            "Kabupaten Simeulue": ["Kecamatan Alapan", "Kecamatan Salang", "Kecamatan Simeulue Barat", "Kecamatan Simeulue Cut", "Kecamatan Simeulue Tengah", "Kecamatan Simeulue Timur", "Kecamatan Teluk Dalam",
+                                                   "Kecamatan Teupah Barat", "Kecamatan Teupah Selatan", "Kecamatan Teupah Tengah"],        
+                            "Kota Banda Aceh": ["Kecamatan Baiturrahman", "Kecamatan Bandar Raya", "Kecamatan Jaya Baru", "Kecamatan Kuta Alam", "Kecamatan Kuta Raja", "Kecamatan Lueng Bata", "Kecamatan Meuraxa", "Kecamatan Syiah Kuala", "Kecamatan Ulee Kareng"],        
+                            "Kota Langsa": ["Kecamatan Langsa Barat", "Kecamatan Langsa Baro", "Kecamatan Langsa Kota", "Kecamatan Langsa Lama", "Kecamatan Langsa Timur"],        
+                            "Kota Lhokseumawe": ["Kecamatan Banda Sakti", "Kecamatan Blang Mangat", "Kecamatan Muara Dua", "Kecamatan Muara Satu"],        
+                            "Kota Sabang": ["Kecamatan Sukajaya", "Kecamatan Sukakarya", "Kecamatan Sukamakmue"],        
+                            "Kota Subulussalam": ["Kecamatan Longkib", "Kecamatan Penanggalan", "Kecamatan Rundeng", "Kecamatan Simpang Kiri", "Kecamatan Sultan Daulat"],    
+                          };
+
+                          // Tambahkan event listener untuk dropdown Kabupaten/Kota
+                          document.getElementById('pilihanKabupatenkota').addEventListener('change', function() {
+                              var kabupatenKota = this.value;
+                              tampilkanKecamatan(kabupatenKota);
+                          });
+
+                          // Fungsi untuk menampilkan daftar kecamatan berdasarkan kabupaten yang dipilih
+                          function tampilkanKecamatan(kabupaten) {
+                              var kecamatanDropdown = document.getElementById('pilihanKecamatan');
+                              kecamatanDropdown.innerHTML = '<option value="">Pilih Kecamatan</option>';
+
+                              if (kabupaten && kabupatenKecamatan.hasOwnProperty(kabupaten)) {
+                                  var kecamatan = kabupatenKecamatan[kabupaten];
+                                  kecamatan.forEach(function(kec) {
+                                      var option = document.createElement('option');
+                                      option.value = kec;
+                                      option.textContent = kec;
+                                      kecamatanDropdown.appendChild(option);
+                                  });
+                              }
+                          }
+
+                          // Tambahkan event listener untuk dropdown Kecamatan
+                          document.getElementById('pilihanKecamatan').addEventListener('change', function() {
+                              var kecamatan = this.value;
+                              if (kecamatan) {
+                                  cariGeoJSONKecamatan(kecamatan);
+                              }
+                          });
+
+                          // Fungsi untuk mencari GeoJSON kecamatan dan memindahkan peta ke wilayah yang dipilih
+                          function cariGeoJSONKecamatan(kecamatan) {
+                              fetch(`/static/assets/data/GeoJSON/kecamatan/${kecamatan.toLowerCase().replace(/\s+/g, '_')}.geojson`)
+                                  .then(response => response.json())
+                                  .then(data => {
+                                      if (data && data.features && data.features.length > 0) {
+                                          var feature = data.features[0];
+                                          var geometry = feature.geometry;
+                                          myMap.fitBounds(L.geoJSON(geometry).getBounds());
+                                      } else {
+                                          alert('Wilayah tidak ditemukan.');
+                                      }
+                                  })
+                                  .catch(error => {
+                                      console.error('Terjadi kesalahan:', error);
+                                  });
+                          }
+                            var myMap = L.map("map").setView([5.549037601496668, 95.31928497494027], 11);
+                            L.tileLayer("http://{s}.google.com/vt?lyrs=s&x={x}&y={y}&z={z}", {
+                                maxZoom: 20,
+                                subdomains: ["mt0", "mt1", "mt2", "mt3"],
+                            }).addTo(myMap);
+
+                            myMap.addControl(new L.Control.Fullscreen());
+                            var drawnItems = new L.FeatureGroup();
+                            myMap.addLayer(drawnItems);
+                            
+                            var drawControl = new L.Control.Draw({
+                                draw: {
+                                    polyline: false,
+                                    polygon: true,
+                                    circle: false,
+                                    marker: false,
+                                    rectangle: false,
+                                },
+                                edit: {
+                                    featureGroup: drawnItems,
+                                    edit: true,
+                                    remove: true,
+                                }
+                            });
+                            myMap.addControl(drawControl);
+
+                            myMap.on('draw:created', function (e) {
+                              var layer = e.layer;
+                              drawnItems.clearLayers();
+                              drawnItems.addLayer(layer);
+                          
+                              var geojson = layer.toGeoJSON();
+                              // Remove duplicate coordinates
+                              var uniqueCoordinates = removeDuplicateCoordinates(geojson.geometry.coordinates[0]);
+                              geojson.geometry.coordinates[0] = uniqueCoordinates;
+
+                              // Dapatkan nilai akreditasi dari elemen seleksi dropdown
+                              var akreditasi = document.getElementById('pilihanAkreditasi').value;
+
+                              // Setel properti gaya berdasarkan akreditasi
+                              e.layer.setStyle({
+                                  fillColor: getColorByAkreditasi(akreditasi),
+                                  color: 'white',
+                                  weight: 2,
+                              });
+
+                              document.getElementById('geometri').value = JSON.stringify(geojson.geometry);
+                              document.getElementById('warna').value = getColorByAkreditasi(akreditasi); // Simpan warna pada input hidden
+                            });
+
+                             /// Tambahkan legenda ke dalam peta
+                             var legend = L.control({position: 'topright'});
+                             legend.onAdd = function (map) {
+                                 var div = L.DomUtil.create('div', 'info legend');
+                                 div.style.backgroundColor = 'white';
+                                 div.innerHTML += '<h3>Keterangan</h3>';
+                                 div.innerHTML += '<div><span class="dot" style="background-color: green;"></span> Akreditasi A</div>';
+                                 div.innerHTML += '<div><span class="dot" style="background-color: blue;"></span> Akreditasi B</div>';
+                                 div.innerHTML += '<div><span class="dot" style="background-color: yellow;"></span> Akreditasi C</div>';
+                                 div.innerHTML += '<div><span class="dot" style="background-color: red;"></span> Tidak Terakreditasi</div>';
+                                 return div;
+                             };
+                             // Add CSS for dot
+                             var css = document.createElement('style');
+                             css.type = 'text/css';
+                             css.innerHTML = '.dot { width: 10px; height: 10px; display: inline-block; border-radius: 50%; margin-right: 5px; }';
+                             document.head.appendChild(css);
+                             legend.addTo(myMap);
+
+                            // Function to remove duplicate coordinates
+                            function removeDuplicateCoordinates(coordinates) {
+                              var uniqueCoordinates = [];
+                              var seenCoordinates = {};
+
+                              for (var i = 0; i < coordinates.length; i++) {
+                                  var coordKey = coordinates[i].toString();
+
+                                  if (!seenCoordinates.hasOwnProperty(coordKey)) {
+                                      uniqueCoordinates.push(coordinates[i]);
+                                      seenCoordinates[coordKey] = true;
+                                  }
+                              }
+
+                              return uniqueCoordinates;
+                            } 
+                             // Function to get color based on akreditasi value
+                            function getColorByAkreditasi(akreditasi) {
+                              switch (akreditasi) {
+                                  case 'A':
+                                      return 'green';
+                                  case 'B':
+                                      return 'blue';
+                                  case 'C':
+                                      return 'yellow';
+                                  case 'TT':
+                                      return 'red';
+                              }
+                            }
+                        </script>
+                      <div class="card-footer">
+                        <button type="submit" class="btn btn-primary mt-3">Kirim</button>
+                      </div>
+                  </section>
+                </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+</div>
+
+  {% include 'layout_admin/footer.html' %} {% endblock content %}

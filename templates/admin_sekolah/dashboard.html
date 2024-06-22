@@ -1,0 +1,198 @@
+{% extends 'base.html' %} 
+{% load static %} 
+{% block content %} 
+{% include 'layout_admin/navbar.html' %} 
+{% include 'layout_admin/sidebar.html' %}
+
+<div class="main-content">
+  <section class="section">
+    <div class="col-12 mb-4">
+      <div class="hero bg-white text-primary">
+        <div class="hero-inner">
+          <h2>Welcome, Admin {{ user.nama }}!</h2>
+          <p class="lead">
+            Kamu Sekarang Dapat Menambahkan Data Sekolahmu dan Dapat Melihat
+            Data Sekolah Lain!
+          </p>
+        </div>
+      </div>
+    </div>
+    
+    <div class="col-lg-12 col-md-12 col-12 col-sm-12">
+      <div class="card mt-sm-5 mt-md-0">
+        <div class="card-header">
+          {% if data_disetujui %}
+          <a href="{% url 'EditPengajuanSekolah' %}" class="btn btn-primary"
+            >Edit Data</a
+          >
+          {% else %}
+          <a href="{% url 'PengajuanSekolah' %}" class="btn btn-primary"
+            >Tambah Data</a
+          >
+          {% endif %}
+        </div>
+      </div>
+    </div>
+
+    <div class="col-lg-12 col-md-12 col-12 col-sm-12">
+      <div class="card mt-sm-5 mt-md-0">
+        <div class="card-header">
+          <h2>Data Sekolah Anda</h2>
+        </div>
+        <div class="card-body">
+          {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                    <li>{{ message }}</li>
+                {% endfor %}
+            </ul>
+          {% endif %}
+          
+          {% for pengajuan in pengajuan_sekolah %}
+          <p>NPSN Sekolah             : {{ pengajuan.NPSN }}</p>
+          <p>Nama Sekolah             : {{ pengajuan.NamaSekolah }}</p>
+          <p>Nama Kepala Sekolah      : {{ pengajuan.NamaKepalaSekolah }}</p>
+          <p>Nama Pengawas Sekolah    : {{ pengajuan.NamaPengawasSekolah }}</p>
+          <p>Alamat Sekolah           : {{ pengajuan.AlamatSekolah }}</p>
+          <p>Jenjang Sekolah          : {{ pengajuan.JenjangSekolah }}</p>
+          <p>Status Sekolah           : {{ pengajuan.StatusSekolah }}</p>
+          <p>Kabupaten/Kota           : {{ pengajuan.KabupatenKota }}</p>
+          <p>Akreditasi Sekolah       : {{ pengajuan.AkreditasiSekolah }}</p>
+          <p>Tahun Pengajuan Terakhir  : {{ pengajuan.TahunPengajuanTerakhir }}</p>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+
+    <div class="col-lg-12 col-md-12 col-12 col-sm-12">
+      <div class="card mt-sm-5 mt-md-0">
+        <div class="card-header">
+          <h4>Peta Akreditasi Sekolah</h4>
+        </div>
+        <div class="card-body">
+          <div class="col-5">
+            <label for="kabupatenDropdown"></label>
+              <select class="form-control selectric" id="kabupatenDropdown">
+                <option>Pilih Kabupaten/Kota </option>
+                <option value="Kabupaten Aceh Barat">Kabupaten Aceh Barat</option>
+                <option value="Kabupaten Aceh Barat Daya">Kabupaten Aceh Barat Daya</option>
+                <option value="Kabupaten Aceh Besar">Kabupaten Aceh Besar</option>
+                <option value="Kabupaten Aceh Jaya">Kabupaten Aceh Jaya</option>
+                <option value="Kabupaten Aceh Selatan">Kabupaten Aceh Selatan</option>
+                <option value="Kabupaten Aceh Singkil">Kabupaten Aceh Singkil</option>
+                <option value="Kabupaten Aceh Tamiang">Kabupaten Aceh Tamiang</option>
+                <option value="Kabupaten Aceh Tengah">Kabupaten Aceh Tengah</option>
+                <option value="Kabupaten Aceh Tenggara">Kabupaten Aceh Tenggara</option>
+                <option value="Kabupaten Aceh Timur">Kabupaten Aceh Timur</option>
+                <option value="Kabupaten Aceh Utara">Kabupaten Aceh Utara</option>
+                <option value="Kabupaten Bener Meriah">Kabupaten Bener Meriah</option>
+                <option value="Kabupaten Bireun">Kabupaten Bireun</option>
+                <option value="Kabupaten Gayo Lues">Kabupaten Gayo Lues</option>
+                <option value="Kabupaten Nagan Raya">Kabupaten Nagan Raya</option>
+                <option value="Kabupaten Pidie">Kabupaten Pidie</option>
+                <option value="Kabupaten Pidie Jaya">Kabupaten Pidie Jaya</option>
+                <option value="Kabupaten Simeulue">Kabupaten Simeulue</option>
+                <option value="Kota Banda Aceh">Kota Banda Aceh</option>
+                <option value="Kota Langsa">Kota Langsa</option>
+                <option value="Kota Lhokseumawe">Kota Lhokseumawe</option>
+                <option value="Kota Sabang">Kota Sabang</option>
+                <option value="Kota Subulussalam">Kota Subulussalam</option>
+              </select>   
+          </div>
+          <div id="map" style="height: 430px; border-radius: 30px" class="mt-3">
+            <!-- leaflet js-->
+            <link
+              rel="stylesheet"
+              href="https://unpkg.com/leaflet@1.9.2/dist/leaflet.css"
+            />
+            <script src="https://unpkg.com/leaflet@1.9.2/dist/leaflet.js"></script>
+
+            <!--fullscreen-->
+            <link
+              rel="stylesheet"
+              href="https://unpkg.com/leaflet-fullscreen/dist/leaflet.fullscreen.css"
+            />
+            <script src="https://unpkg.com/leaflet-fullscreen/dist/Leaflet.fullscreen.min.js"></script>
+            <script>
+                var baseLayer = L.tileLayer("http://{s}.google.com/vt?lyrs=m&x={x}&y={y}&z={z}", {
+                  maxZoom: 20,
+                  subdomains: ["mt0", "mt1", "mt2", "mt3"],
+              });
+
+              var myMap = L.map("map").setView([5.549037601496668, 95.31928497494027], 11);
+              myMap.addLayer(baseLayer);
+              myMap.addControl(new L.Control.Fullscreen());
+              var drawnItems = new L.FeatureGroup().addTo(myMap);
+
+              // Tambahkan semua data poligon ke dalam drawnItems saat peta pertama kali dimuat
+              {% for PolygonModel in data_poligon %}
+                var geojson = {{ PolygonModel.geometri|safe }};
+                var warna = "{{ PolygonModel.warna }}";
+                var NamaSekolah = "{{ PolygonModel.SekolahId.NamaSekolah }}";
+
+                var layer = L.geoJSON(geojson, {
+                  style: {
+                    fillColor: warna,
+                    weight: 2,
+                    opacity: 1,
+                    color: 'black',
+                    fillOpacity: 0.7
+                  },
+                  onEachFeature: function (feature, layer) {
+                    layer.bindPopup(NamaSekolah);
+                  }
+                });
+                drawnItems.addLayer(layer);
+              {% endfor %}
+
+               /// Tambahkan legenda ke dalam peta
+               var legend = L.control({position: 'topright'});
+               legend.onAdd = function (map) {
+                   var div = L.DomUtil.create('div', 'info legend');
+                   div.style.backgroundColor = 'white';
+                   div.innerHTML += '<h3>Keterangan</h3>';
+                   div.innerHTML += '<div><span class="dot" style="background-color: green;"></span> Akreditasi A</div>';
+                   div.innerHTML += '<div><span class="dot" style="background-color: blue;"></span> Akreditasi B</div>';
+                   div.innerHTML += '<div><span class="dot" style="background-color: yellow;"></span> Akreditasi C</div>';
+                   div.innerHTML += '<div><span class="dot" style="background-color: red;"></span> Tidak Terakreditasi</div>';
+                   return div;
+               };
+               // Add CSS for dot
+               var css = document.createElement('style');
+               css.type = 'text/css';
+               css.innerHTML = '.dot { width: 10px; height: 10px; display: inline-block; border-radius: 50%; margin-right: 5px; }';
+               document.head.appendChild(css);
+               legend.addTo(myMap);
+
+               // Tambahkan event listener untuk dropdown Kabupaten/Kota
+               document.getElementById('kabupatenDropdown').addEventListener('change', function() {
+                var kabupatenKota = this.value;
+                cariGeoJSON(kabupatenKota);
+              });
+
+              // Fungsi untuk membaca file GeoJSON dan memindahkan peta ke wilayah yang dipilih
+              function cariGeoJSON(lokasi) {
+                fetch(`/static/assets/data/GeoJSON/kabupaten/${lokasi.toLowerCase().replace(/\s+/g, '_')}.geojson`)
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data && data.features && data.features.length > 0) {
+                            var feature = data.features[0];
+                            var geometry = feature.geometry;
+                            myMap.fitBounds(L.geoJSON(geometry).getBounds());
+                        } else {
+                            alert('Wilayah tidak ditemukan.');
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Terjadi kesalahan:', error);
+                    });
+              }
+            </script>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+{% include 'layout_admin/footer.html' %} {% endblock content %}

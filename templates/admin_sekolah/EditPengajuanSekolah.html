@@ -1,0 +1,74 @@
+{% extends 'base.html' %} 
+{% load static %} 
+{% block content %} 
+{% include 'layout_admin/navbar.html' %} 
+{% include 'layout_admin/sidebar.html' %}
+
+ <!-- Main Content -->
+ <div class="main-content">
+    <section class="section">
+      <div class="section-header">
+        <h1>Halaman Edit Data</h1>
+        <div class="section-header-breadcrumb">
+          <div class="breadcrumb-item active"><a href="#">Dashboard</a></div>
+          <div class="breadcrumb-item"><a href="#">Data Sekolah</a></div>
+          <div class="breadcrumb-item">Edit Data Sekolah</div>
+        </div>
+      </div>
+
+      <div class="section-body">
+        <h2 class="section-title">Edit Data Sekolah</h2>
+
+        <div class="row">
+          <div class="container">
+            <div class="card">
+              <div class="card-body">
+                <form method="POST" action="{% url 'EditPengajuanSekolah'%} ">
+                {% csrf_token %}
+                    <div class="form-group">
+                        <label for="NPSN">NPSN</label>
+                        <input type="number" name="NPSN" id="NPSN" class="form-control" value="{{ pengajuan_sekolah.NPSN }}">
+                    </div>
+                    <div class="form-group">
+                        <label for="NamaSekolah">Nama Sekolah</label>
+                        <input type="text" name="NamaSekolah" id="NamaSekolah" class="form-control" value="{{ pengajuan_sekolah.NamaSekolah }}">
+                    </div>
+                    <div class="form-group">
+                        <label for="NamaKepalaSekolah">Nama Kepala Sekolah</label>
+                        <input type="text" name="NamaKepalaSekolah" id="NamaKepalaSekolah" class="form-control" value="{{ pengajuan_sekolah.NamaKepalaSekolah }}">
+                    </div>
+                    <div class="form-group">
+                        <label for="NamaPengawasSekolah">Nama Pengawas Sekolah</label>
+                        <input type="text" name="NamaPengawasSekolah" id="NamaPengawasSekolah" class="form-control" value="{{ pengajuan_sekolah.NamaPengawasSekolah }}">
+                    </div>
+                      <div class="form-group">
+                          <label for="AlamatSekolah">Alamat Sekolah</label>
+                          <input type="text" name="AlamatSekolah" id="AlamatSekolah" class="form-control" value="{{ pengajuan_sekolah.AlamatSekolah }}">
+                      </div>
+                    <div class="form-group">
+                        <label for="JenjangSekolah">Jenjang Sekolah</label>
+                        <select name="JenjangSekolah" id="JenjangSekolah" class="form-control">
+                          {% for jenjang, jenjang_label in pengajuan_sekolah.JENJANG_CHOICES %}
+                              <option value="{{ jenjang }}" {% if pengajuan_sekolah.JenjangSekolah == jenjang %} selected {% endif %}>{{ jenjang_label }}</option>
+                          {% endfor %}
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="StatusSekolah">Status Sekolah</label>
+                        <select name="StatusSekolah" id="StatusSekolah" class="form-control">
+                          {% for status, status_label in pengajuan_sekolah.SEKOLAH_CHOICES %}
+                              <option value="{{ status }}" {% if pengajuan_sekolah.StatusSekolah == status %} selected {% endif %}>{{ status_label }}</option>
+                          {% endfor %}
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Kirim</button>
+                  </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  {% include 'layout_admin/footer.html' %} {% endblock content %}

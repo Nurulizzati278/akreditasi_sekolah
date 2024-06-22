@@ -1,0 +1,38 @@
+{% extends 'base.html' %} 
+{% load static %} 
+{% block content %} 
+{% include 'layout_admin/navbar.html' %} 
+{% include 'layout_admin/sidebar.html' %}
+
+<!-- Main Content -->
+<div class="main-content">
+    <section class="section">
+        <div class="section-header">
+            <h1>Perbarui Akreditasi</h1>
+            <div class="section-header-breadcrumb">
+                <div class="breadcrumb-item active"><a href="#">Dashboard</a></div>
+                <div class="breadcrumb-item"><a href="#">Pengajuan Akreditasi</a></div>
+                <div class="breadcrumb-item"><a href="#">Perbarui Akreditasi</a></div>
+            </div>
+        </div>
+
+        <div class="section-body">
+            <h2 class="section-title">Form Perbarui Akreditasi</h2>
+            <div class="row">
+                <div class="container">
+                    <div class="card">
+                        <form action="{% url 'PerbaruiAkreditasi' %}" method="post">
+                            {% csrf_token %}
+                            <div class="card-body">
+                                Akreditasi Anda Sudah Diperbarui, Silahkan Cek di Dashboard Anda!
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+{% include 'layout_admin/footer.html' %}
+{% endblock content %}

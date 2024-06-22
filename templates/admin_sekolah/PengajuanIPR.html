@@ -1,0 +1,207 @@
+{% extends 'base.html' %} 
+{% load static %} 
+{% block content %} 
+{% include 'layout_admin/navbar.html' %} 
+{% include 'layout_admin/sidebar.html' %}
+
+
+ <!-- Main Content -->
+<div class="main-content">
+  <section class="section">
+    <div class="section-header">
+      <h1>Halaman Pengajuan Nilai Akreditasi </h1>
+      <div class="section-header-breadcrumb">
+        <div class="breadcrumb-item active"><a href="#">Dashboard</a></div>
+        <div class="breadcrumb-item"><a href="#">Pengajuan Akreditasi</a></div>
+      </div>
+    </div>
+
+    <div class="section-body">
+      <h2 class="section-title">Pengajuan Nilai Akreditasi</h2>
+
+        <div class="row">
+          <div class="container">
+            <div class="card">
+              <div class="card-body">
+                <div class="form-group">
+                  <form method="POST" class="form" action="{% url "PengajuanIPR" %}"  enctype="multipart/form-data"   autocomplete="off">
+                  {% csrf_token %}
+                    <h2>Butir Pemenuhan Relatif</h2>
+                    <div class="container mt-3">
+                      <!-- butir pertama -->
+                      {% comment %} <div class="mb-3">
+                        <label class="form-label">NPSN</label>
+                        <input type="text"  name="npsn" class="form-control" placeholder="NPSN Sekolah" required="">
+                      </div> {% endcomment %}
+                    <!-- butir pertama -->
+                      <div class="mb-3">
+                        <label class="form-label">1. Kualifikasi akademik guru minimum sarjana (S1) atau diploma empat (D4)</label>
+                        <input type="text"  name="GuruS1" class="form-control" placeholder="Jumlah Guru S1 atau D4" required="">
+                        <input type="text"  name="GuruKeseluruhan1" class="form-control" placeholder="Jumlah Guru Keseluruhan" required="">
+                      </div>
+
+                      <!-- butir kedua -->
+                      <div class="mt-3">
+                        <div class="mb-3">
+                          <label class="form-label">2. Guru yang memiliki sertifikat pendidik</label>
+                          <input type="text"  name="GuruBersertifikat" class="form-control" placeholder="Jumlah Guru Bersertifikat Pendidik" required="">
+                          <input type="text"  name="GuruKeseluruhan2" class="form-control" placeholder="Jumlah Guru Keseluruhan" required="">
+                        </div>
+                      </div>
+
+                      <!-- butir ketiga -->
+                      <div class="mt-3">
+                        <div class="mb-3">
+                          <label class="form-label">3. Guru yang mengajar sesuai latar belakang pendidikan</label>
+                          <input type="text"  name="GuruMengajarSesuaiPendidikan" class="form-control" placeholder="Jumlah Guru Guru yang mengajar sesuai latar belakang pendidikan" required="">
+                          <input type="text"  name="GuruKeseluruhan3" class="form-control" placeholder="Jumlah Guru Keseluruhan" required="">
+                        </div>
+                      </div>
+
+                      <!-- butir keempat -->
+                      <div class="mb-3">
+                        <label class="form-label">4. Sekolah memiliki tenaga administrasi yang memenuhi syarat sesuai ketentuan</label>
+                        <div class="form-check form-check-inline">
+                          <input class="form-check-input" type="radio" name="ipr1" id="inlineRadio1" value="1" required="">
+                          <label class="form-check-label" for="inlineRadio1">1</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                          <input class="form-check-input" type="radio" name="ipr1" id="inlineRadio2" value="2" required="">
+                          <label class="form-check-label" for="inlineRadio2">2</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                          <input class="form-check-input" type="radio" name="ipr1" id="inlineRadio3" value="3" required="">
+                          <label class="form-check-label" for="inlineRadio3">3</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                          <input class="form-check-input" type="radio" name="ipr1" id="inlineRadio4" value="4" required="">
+                          <label class="form-check-label" for="inlineRadio4">4</label>
+                        </div>
+                      </div>
+
+                      <!-- butir kelima -->
+                      <div class="mb-3">
+                        <label class="form-label">5. Sekolah memiliki kepala perpustakaan yang memenuhi syarat sesuai ketentuan</label>
+                        <div class="form-check form-check-inline">
+                          <input class="form-check-input" type="radio" name="ipr2" id="inlineRadio5" value="1" required="">
+                          <label class="form-check-label" for="inlineRadio5">1</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                          <input class="form-check-input" type="radio" name="ipr2" id="inlineRadio6" value="2" required="">
+                          <label class="form-check-label" for="inlineRadio6">2</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                          <input class="form-check-input" type="radio" name="ipr2" id="inlineRadio7" value="3" required="">
+                          <label class="form-check-label" for="inlineRadio7">3</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                          <input class="form-check-input" type="radio" name="ipr2" id="inlineRadio8" value="4" required="">
+                          <label class="form-check-label" for="inlineRadio8">4</label>
+                        </div>
+                      </div>
+
+                      <!-- butir keenam -->
+                      <div class="mb-3">
+                        <label class="form-label">6. Jumlah rombongan belajar</label>
+                        <div class="form-check form-check-inline">
+                          <input class="form-check-input" type="radio" name="ipr3" id="inlineRadio9" value="1" required="">
+                          <label class="form-check-label" for="inlineRadio9">1</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                          <input class="form-check-input" type="radio" name="ipr3" id="inlineRadio10" value="2" required="">
+                          <label class="form-check-label" for="inlineRadio10">2</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                          <input class="form-check-input" type="radio" name="ipr3" id="inlineRadio11" value="3" required="">
+                          <label class="form-check-label" for="inlineRadio11">3</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                          <input class="form-check-input" type="radio" name="ipr3" id="inlineRadio12" value="4" required="">
+                          <label class="form-check-label" for="inlineRadio12">4</label>
+                        </div>
+                      </div>
+
+                      <!-- butir ketujuh -->
+                      <div class="mb-3">
+                        <label class="form-label">7. Bangunan sekolah memiliki instalasi listrik dengan daya yang mencukupi kebutuhan</label>
+                        <div class="form-check form-check-inline">
+                          <input class="form-check-input" type="radio" name="ipr4" id="inlineRadio13" value="1" required="">
+                          <label class="form-check-label" for="inlineRadio13">1</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                          <input class="form-check-input" type="radio" name="ipr4" id="inlineRadio14" value="2" required="">
+                          <label class="form-check-label" for="inlineRadio14">2</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                          <input class="form-check-input" type="radio" name="ipr4" id="inlineRadio15" value="3" required="">
+                          <label class="form-check-label" for="inlineRadio15">3</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                          <input class="form-check-input" type="radio" name="ipr4" id="inlineRadio16" value="4" required="">
+                          <label class="form-check-label" for="inlineRadio16">4</label>
+                        </div>
+                      </div>
+
+                      <!-- butir kedelapan -->
+                      <div class="mb-3">
+                        <label class="form-label">8.Ruangan penunjang yang cukup</label>
+                        <div class="form-check form-check-inline">
+                          <input class="form-check-input" type="radio" name="ipr5" id="inlineRadio17" value="1" required="">
+                          <label class="form-check-label" for="inlineRadio17">1</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                          <input class="form-check-input" type="radio" name="ipr5" id="inlineRadio18" value="2" required="">
+                          <label class="form-check-label" for="inlineRadio18">2</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                          <input class="form-check-input" type="radio" name="ipr5" id="inlineRadio19" value="3" required="">
+                          <label class="form-check-label" for="inlineRadio19">3</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                          <input class="form-check-input" type="radio" name="ipr5" id="inlineRadio20" value="4" required="">
+                          <label class="form-check-label" for="inlineRadio20">4</label>
+                        </div>
+                      </div>
+
+                      <!-- butir kesembilan -->
+                      <div class="mb-3">
+                        <label class="form-label">9.Sekolah memiliki WC/jamban</label>
+                        <div class="form-check form-check-inline">
+                          <input class="form-check-input" type="radio" name="ipr6" id="inlineRadio21" value="1" required="">
+                          <label class="form-check-label" for="inlineRadio21">1</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                          <input class="form-check-input" type="radio" name="ipr6" id="inlineRadio22" value="2" required="">
+                          <label class="form-check-label" for="inlineRadio22">2</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                          <input class="form-check-input" type="radio" name="ipr6" id="inlineRadio23" value="3" required="">
+                          <label class="form-check-label" for="inlineRadio23">3</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                          <input class="form-check-input" type="radio" name="ipr6" id="inlineRadio24" value="4" required="">
+                          <label class="form-check-label" for="inlineRadio24">4</label>
+                        </div>
+                      </div>
+                    </div>
+                    <label for="school_type">Pilih Jenis Sekolah Untuk Melanjutkan Pengajuan Akreditasi:</label>
+                      <select name="school_type" id="school_type">
+                          <option value="SMA">SMA</option>
+                          <option value="SMK">SMK</option>
+                      </select>
+                      <button type="submit" class="btn btn-primary">Submit</button>
+                  </form>
+                </div>
+
+                  <!-- Bootstrap JS (diperlukan untuk beberapa fitur Bootstrap) -->
+                <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"></script>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+  {% include 'layout_admin/footer.html' %} {% endblock content %}

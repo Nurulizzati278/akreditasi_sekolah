@@ -1,0 +1,27 @@
+{% block content %}
+<div class="main-sidebar sidebar-style-2">
+    <aside id="sidebar-wrapper">
+      <div class="sidebar-brand">
+        <a href="">Akreditasi Sekolah</a>
+      </div>
+      <div class="sidebar-brand sidebar-brand-sm">
+        <i class="fa fa-school"></i>
+      </div>
+      <ul class="sidebar-menu">
+        <li class="menu-header">Dashboard</li>
+        <li><a class="nav-link" href=" {% url "dashboard" %} " class="nav-link"><i class="fas fa-fire"></i><span>Dashboard</span></a>
+        </li>
+        <li class="menu-header">Starter</li>
+       {% comment %} <li><a class="nav-link" href="{% url "PengajuanSekolah" %}"><i class="far fa-file-alt"></i> <span>Pengajuan Sekolah</span></a></li> {% endcomment %}
+        <li><a class="nav-link" href="{% url "DataSekolah" %}"><i class="far fa-file-alt"></i> <span>Data Sekolah</span></a></li>
+        <li>
+          <a href="#" class="nav-link has-dropdown"><i class="far fa-file-alt"></i><span>Pengajuan Akreditasi</span></a>
+          <ul class="dropdown-menu">
+            <li><a class="nav-link" href="{% url "PengajuanSMA" %}">Pengajuan Akreditasi SMA</a></li>
+            <li><a class="nav-link" href="{% url "PengajuanSMK" %}">Pengajuan Akreditasi SMK</a></li>
+          </ul>
+        </li>
+        <li><a class="nav-link" href="{% url "panduan" %}"><i class="far fa-newspaper"></i> <span>Panduan</span></a></li>
+    </aside>
+</div>
+{% endblock content %}

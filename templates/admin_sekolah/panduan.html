@@ -1,0 +1,84 @@
+{% extends 'base.html' %} 
+{% load static %} 
+{% block content %} 
+{% include 'layout_admin/navbar.html' %} 
+{% include 'layout_admin/sidebar.html' %}
+
+<!-- Main Content -->
+<div class="main-content">
+  <section class="section">
+    <div class="section-header">
+      <h1>Panduan</h1>
+    </div>
+    <div class="row">
+      <div class="col-12 col-md-12 col-sm-12">
+        <div class="card">
+          <div class="card-header">
+            <h4>Cara Pengajuan Data Sekolah</h4>
+          </div>
+          <div class="card-body">
+            <div class="empty-state" data-height="400">
+              <div class="empty-state-icon">
+                <i class="fas fa-question"></i>
+              </div>
+              <p class="text-left mt-3">
+               1. Pilih Halaman Data Sekolah</br>
+               2. Klik Tombol Tambah Data</br>
+               3. Isi Data Sekolah</br>
+
+               <br>*Untuk Pengisian Poligon di peta</br>
+               1. Pilih <i>Fullscreen</i> </br>
+               2. Cari Lokasi Sekolah </br>
+               3. Tekan Tanda + Untuk Memperbesar dan Tanda - Untuk Memperkecil
+               4. Pilih <i>Draw a Polygon</i> </br>
+               5. Gambar Poligon Sesuai Bentuk Sekolah </br>
+               6. Klik <i>FInish</i> </br>
+               7. Tekan ESC Pada <i>Keyboard</i> atau <i>Exit Fullscreen</i> Untuk Keluar Dari Halaman <i>Fullscreen</i> Peta </br>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 col-md-6 col-sm-12">
+        <div class="card">
+          <div class="card-header">
+            <h4>Cara Melihat Data Sudah Diterima atau Belum</h4>
+          </div>
+          <div class="card-body">
+            <div class="empty-state" data-height="200">
+              <div class="empty-state-icon">
+                <i class="fas fa-question"></i>
+              </div>
+              <p class="text-left mt-3">
+               1. Data yang Sudah Diterima Akan Ditampilkan Pada Halaman Dashboard</br>
+               2. Jika Data Tidak Ada, Maka Data Mungkin Ditolak Oleh Admin Utama</br>
+               3. Data Paling Lambat Diproses 3 Hari Kerja
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 col-md-6 col-sm-12">
+        <div class="card">
+          <div class="card-header">
+            <h4>Cara Pengajuan Akreditasi Sekolah</h4>
+          </div>
+          <div class="card-body">
+            <div class="empty-state" data-height="200">
+              <div class="empty-state-icon">
+                <i class="fas fa-question"></i>
+              </div>
+              <p class="text-left mt-3">
+              1. Pilih Halaman Pengajuan Akreditasi Untuk SMA atau SMK</br>
+              2. Isi Data Pengajuan yang Telah Disediakan</br>
+              3. Tekan Kirim
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+{% include 'layout_admin/footer.html' %} {% endblock content %}
